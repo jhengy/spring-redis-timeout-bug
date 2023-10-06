@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  test-redis:
+    image: redis:7.2.1-alpine
+    ports:
+      - 6381:6379
+    hostname: asp-redis
+    command: redis-server --port 6379 --enable-debug-command local

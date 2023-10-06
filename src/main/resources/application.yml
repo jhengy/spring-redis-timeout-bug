@@ -1,0 +1,14 @@
+spring:
+  data:
+    redis: # Redis Properties
+      host: localhost
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+      password:
+      port: 6381
+      ssl:
+        enabled: false
+      timeout: 3s
+customize-client-options: true
