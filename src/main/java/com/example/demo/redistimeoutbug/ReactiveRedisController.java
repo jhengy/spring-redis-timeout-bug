@@ -9,23 +9,23 @@ import java.time.*;
 import java.util.Map;
 
 @RestController
-public class DemoController {
+public class ReactiveRedisController {
     private final ReactiveStringRedisTemplate reactiveStringRedisTemplate;
 
-    public DemoController(ReactiveStringRedisTemplate reactiveStringRedisTemplate) {
+    public ReactiveRedisController(ReactiveStringRedisTemplate reactiveStringRedisTemplate) {
         this.reactiveStringRedisTemplate = reactiveStringRedisTemplate;
     }
 
-    @GetMapping(value = "/hset")
+    @GetMapping(value = "/hset-reactive")
     public ResponseEntity<String> hset() {
         reactiveStringRedisTemplate
             .opsForHash()
             .putAll("test-key", Map.of("field1", "value1"))
             .block();
-        return ResponseEntity.ok("hset succeeded");
+        return ResponseEntity.ok("/hset-reactive succeeded");
     }
 
-    @GetMapping(value = "/hget")
+    @GetMapping(value = "/hget-reactive")
     public ResponseEntity<String> hget() {
         Instant start = Instant.now();
         final Map<Object, Object> hash = reactiveStringRedisTemplate
