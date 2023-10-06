@@ -2,8 +2,9 @@
 ## Summary
 - setting `ClientOptions` through `LettuceClientConfigurationBuilderCustomizer` seems to break spring data redis timeout property: `spring.redis.timeout`
 - the following does not resolve the bug
-  - upgrading spring boot to the latest version (3.1.4 at the time of writing)
-  - upgrading redis to the latest version (7.2.1 at the time of writing)
+  - upgrading spring boot from 2.7.14 to the latest version (3.1.4 at the time of writing)
+  - upgrading redis from 5.0 to the latest version (7.2.1 at the time of writing)
+  - set redis command timeout programatically via `LettuceClientConfigurationBuilderCustomizer
 
 ## Steps
 
