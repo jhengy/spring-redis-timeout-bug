@@ -1,8 +1,8 @@
 package com.example.demo.redistimeoutbug;
 
-import io.lettuce.core.ClientOptions;
+import io.lettuce.core.*;
 import org.slf4j.*;
-import org.springframework.boot.autoconfigure.condition.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.data.redis.LettuceClientConfigurationBuilderCustomizer;
 import org.springframework.context.annotation.*;
 
@@ -17,7 +17,9 @@ public class RedisConfig {
         logger.info("Customize Lettuce configuration Client Options");
 
         return builder -> builder.clientOptions(
-            ClientOptions.builder().build()
+            ClientOptions.builder()
+                .timeoutOptions(TimeoutOptions.enabled())
+                .build()
         );
     }
 }
